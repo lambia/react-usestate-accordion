@@ -16,21 +16,34 @@ function Accordion(props) {
 	}
 
 	//Render function, al momento non usata (v. righe 40-50)
-	function getContenuto(visible, contenuto) {
+	//Recupero isOpen e content direttamente dallo scope (dalle props)
+	//Non ho bisogno di argomenti da passare
+	function getContenuto() {
 
 		//Se visibile è true, restituisco un div con il testo
-		if (visible) {
-			return <div>{contenuto}</div>;
+		if (isOpen) {
+			return <div>{content}</div>;
 		}
 
 		//Altrimenti, niente
+	}
+
+	//Render function, usata per stampare il testo del bottone
+	//Recupero isOpen direttamente dallo scope (dalle props)
+	//Non ho bisogno di argomenti da passare
+	function getTestoBottone() {
+		if (isOpen) {
+			return "Chiudi"
+		} else {
+			return "Apri"
+		}
 	}
 
 	return (
 		<div className="accordion">
 			<div className="accordion__title">
 				<h3>{title}</h3>
-				<button onClick={toggleAccordion} className="accordion__btn">APRI</button>
+				<button onClick={toggleAccordion} className="accordion__btn">{getTestoBottone()}</button>
 			</div>
 
 			{/* Mostro/nascondo solo il testo, ma si vede il div */}
@@ -43,7 +56,7 @@ function Accordion(props) {
 			{isOpen && <div>{content}</div>}
 
 			{/* Con una render function ottengo l'html in base alla condizione */}
-			{/* {getContenuto(isOpen, content)} */}
+			{/* {getContenuto()} */}
 
 		</div>
 	)
