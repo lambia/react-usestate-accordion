@@ -1,14 +1,22 @@
-import AccordionList from './components/AccordionList'
+import AccordionBaseList from './components/base/AccordionBaseList'
+import AccordionFxList from './components/fx/AccordionFxList'
+import AccordionProList from './components/pro/AccordionProList'
 
 function App() {
 
   return (
-    <>
-      <h1>Esempio di Accordion</h1>
-      <div className="container">
-        <AccordionList />
-      </div>
-    </>
+    <div className="container">
+      <h1>Esempi di Accordion</h1>
+
+      <h2>Versione Base</h2>
+      <AccordionBaseList />
+
+      <h2>Con Render Functions</h2>
+      <AccordionFxList />
+
+      <h2>Gestione nel padre</h2>
+      <AccordionProList />
+    </div>
   )
 }
 
